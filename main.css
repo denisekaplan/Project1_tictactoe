@@ -1,0 +1,76 @@
+html {
+	background-image: url(chalkboard.jpg);
+}
+/*
+.leftSide {
+	border-left: 3px solid orange
+}
+.topSide {
+	border-top: 3px solid orange;
+}*/
+
+#container {
+	background-color: blue;
+	height: 550px;
+	width: 550px;
+	margin-top: 160px;
+	margin-left: 705px;
+	
+}
+#squares > div {
+	border: 1px solid white;
+	width: 166px;
+	height: 166px;
+	display: inline-block;
+}
+
+
+
+/*.container {
+	height: 1000px;
+	width: 1000px;
+	background-image: url(chalkboard.jpg);
+}
+
+.lines {
+	color: white;
+}
+
+#horline1 {
+	position: relative;
+	top: 166px;
+	height: 22px;
+	width: 500px;
+	background-color: white;
+	z-index: 1;
+}
+
+#horline2 {
+	position: relative;
+	top: 332px;
+	height: 22px;
+	width: 500px;
+	background-color: white;
+	z-index: 1;
+}
+
+#verline1 {
+	position: absolute;
+	bottom: -1px;
+	left: 162px;
+	height: 768px;
+	width: 22px;
+	background-color: white;
+	z-index: 1;
+}
+
+#verline2 {
+	position: absolute;
+	bottom: -1px;
+	left: 329px;
+	height: 768px;
+	width: 22px;
+	background-color: white;
+	z-index: 1;
+	float: left;
+}*/
