@@ -1,29 +1,67 @@
 html {
 	background-image: url(chalkboard.jpg);
 }
-/*
-.leftSide {
-	border-left: 3px solid orange
+
+#quarter{
+	width: 166px;
+	height: 166px;
+	z-index: 0;
+	cursor: pointer;
+
 }
-.topSide {
-	border-top: 3px solid orange;
-}*/
 
 #container {
-	background-color: blue;
 	height: 550px;
 	width: 550px;
 	margin-top: 160px;
-	margin-left: 705px;
-	
+	margin-left: 705px;	
 }
+
 #squares > div {
-	border: 1px solid white;
 	width: 166px;
 	height: 166px;
 	display: inline-block;
 }
 
+#square0 {
+	border-right: 10px solid white;
+	border-bottom: 10px solid white;
+}
+
+#square1 {
+	border-bottom: 10px solid white;
+}
+
+#square2 {
+	border-left: 10px solid white;
+	border-bottom: 10px solid white;
+}
+
+#square3 {
+	border-right: 10px solid white;
+}
+
+#square4 {
+
+}
+
+#square5 {
+	border-left: 10px solid white;
+}
+
+#square6 {
+	border-top: 10px solid white;
+	border-right: 10px solid white;
+}
+
+#square7 {
+	border-top: 10px solid white;
+}
+
+#square8 {
+	border-top: 10px solid white;
+	border-left: 10px solid white;
+}
 
 
 /*.container {
