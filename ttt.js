@@ -1,31 +1,43 @@
-// var x = "X"
-// var o = "O"
-// var count = 0;
-// var o_win = 0;
-// var x_win = 0;
 window.onload = function () {
 	confirm("Let's play!");
-	var xOro = prompt("You want to be X or O?");
-		if(xOro = "x") 
-		{
-			alert("Fine. Whatever. I wanted to be O anyway.");
-		}
-		else {
-			alert("Sweet! X is the best!");
+	var xOro = prompt("You want to be X's or O's?");
+
+		if(xOro == "O" || xOro == "o") {
+			alert("Fine. Whatever. I wanted to be X's anyway.");
 		}
 
-	var coinFlip = prompt("Flip the coin to see who goes first. \n Heads or Tails?");
+		else if(xOro=="X" || xOro == "x") {
+			alert("Sweet! O's are the best! O's! O's! O's");
+		}
+
+		else {
+			alert("That's not even a choice. Seriously, have you never played this game before? Do you live in a cave or something?");
+		}
+
+	var coinFlip = prompt("Let's flip to see who goes first. \n Do you want to be Heads or Tails?");
 	
+
 	// coin flip
 	document.getElementById("quarter").onclick=function() {
-	    alert((Math.floor(Math.random() * 2) == 0) ? "Heads" : "Tails");
-	   };
+	   
+    var rand = Math.floor(Math.random()*2);
 
-	   // if coinFlip = (Math.floor(Math.random() * 2) == 0) {
-	   // 	alert("You go first");
-	   // }
-	   // else	{
-	   // 	alert("Me first");
-	   // 	}
+
+    	if(rand == coinFlip) {
+    		alert("You go first");
+	   }
+	   else	if (rand != coinFlip) {
+	   	alert("Me first");
+	   }
+};
+
 
 }	
+
+    	if(rand == 0) && ({
+    		alert("Heads");
+	   }
+	   else {
+	   	alert("Tails");
+	   }
+};
