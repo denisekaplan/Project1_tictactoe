@@ -1,14 +1,14 @@
 html {
 	background-image: url(chalkboard.jpg);
 }
-
+/*
 #quarter{
 	width: 166px;
 	height: 166px;
 	z-index: 0;
 	cursor: pointer;
 
-}
+}*/
 
 #container {
 	height: 550px;
@@ -17,12 +17,13 @@ html {
 	margin-left: 705px;	
 }
 
-#squares > div {
+.square  {
 	width: 166px;
 	height: 166px;
 	display: inline-block;
+	border: 3px black solid;
 }
-
+/* pre-Angular
 #square0 {
 	border-right: 10px solid white;
 	border-bottom: 10px solid white;
@@ -61,7 +62,7 @@ html {
 #square8 {
 	border-top: 10px solid white;
 	border-left: 10px solid white;
-}
+}*/
 
 
 /*.container {

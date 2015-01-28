@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Tic Tac Toe</title>
-	<link rel="stylesheet" type="css" href="main.css">
 	
+	<link rel="stylesheet" type="css" href="main.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.11/angular.min.js"></script>
+	<script src="ttt.js"></script>
+	<title>Denise's Tic Tac Toe</title>	
 </head>
-<body>
+<body ng-app="angularInputsApp" ng-controller="angularInputsCtrl">
 
 <div id = "quarter">
-	<img src = "quarter.jpg">
+	<img src = "quarter.png">
 </div>
-	<div id = "container">
+
+<div id="container">
+			<div ng-repeat="row in board track by $index">
+				<div class="square" ng-repeat="cell in row track by $index" ng-click="makeMove($parent.$index, $index)">
+					{{ cell == "" ? "&nbsp;" : cell }}
+				</div>
+			</div>
+		</div>
+
+
+	<!-- <div id = "container">
 		<div id = "squares">
 			<div id = "square0"></div>
 			<div id = "square1"></div>
@@ -22,7 +34,7 @@
 			<div id = "square7"></div>
 			<div id = "square8"></div>
 		</div>
-	</div>
-<script src="ttt.js"></script>
+	</div> -->
+
 </body>
 </html>

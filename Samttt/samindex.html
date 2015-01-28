@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="sammain.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+	<script src="samttt.js"></script>
+	<title>Angular Inputs</title>
+</head>
+<body>
+
+	<div ng-app="angularInputsApp"
+			ng-controller="angularInputsCtrl">
+
+		<div id="container">
+			<div ng-repeat="row in board track by $index">
+				<div class="square" ng-repeat="cell in row track by $index" ng-click="makeMove($parent.$index, $index)">
+					{{ cell == "" ? "&nbsp;" : cell }}
+				</div>
+			</div>
+		</div>
+
+		<!-- <div ng-repeat="baconBit in bits track by $index" ng-class="{selected: baconBit}">
+			<input type="checkbox" ng-model="baconBit" />
+			{{ baconBit }}  {{ $index }}
+		</div> -->
+	</div>
+
+</body>
+</html>
