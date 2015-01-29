@@ -5,36 +5,28 @@
 	<link rel="stylesheet" type="css" href="main.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.11/angular.min.js"></script>
 	<script src="ttt.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Walter+Turncoat' rel='stylesheet' type='text/css'>
 	<title>Denise's Tic Tac Toe</title>	
 </head>
 <body ng-app="angularInputsApp" ng-controller="angularInputsCtrl">
 
-<div id = "quarter">
-	<img src = "quarter.png">
+<!-- <div id = "quarter">
+	<img src = "quarter.png"> -->
 </div>
 
 <div id="container">
-			<div ng-repeat="row in board track by $index">
-				<div class="square" ng-repeat="cell in row track by $index" ng-click="makeMove($parent.$index, $index)">
-					{{ cell == "" ? "&nbsp;" : cell }}
-				</div>
-			</div>
+	<div ng-repeat="row in board track by $index">
+		<div class="square" ng-repeat="cell in row track by $index" ng-click="makeMove($parent.$index, $index)">
+			{{ cell == "" ? "&nbsp;" : cell }}
 		</div>
-
-
-	<!-- <div id = "container">
-		<div id = "squares">
-			<div id = "square0"></div>
-			<div id = "square1"></div>
-			<div id = "square2"></div>
-			<div id = "square3"></div>
-			<div id = "square4"></div>
-			<div id = "square5"></div>
-			<div id = "square6"></div>
-			<div id = "square7"></div>
-			<div id = "square8"></div>
-		</div>
-	</div> -->
+	</div>
+</div>
+<div class="winbox">
+	{{piece}}
+</div>
 
 </body>
+<script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
+
+
 </html>

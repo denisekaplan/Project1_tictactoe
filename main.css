@@ -11,105 +11,26 @@ html {
 }*/
 
 #container {
-	height: 550px;
-	width: 550px;
-	margin-top: 160px;
-	margin-left: 705px;	
+	height: 530px;
+	width: 530px;
+	margin-top: 164px;
+	margin: auto;
 }
 
 .square  {
-	width: 166px;
-	height: 166px;
+	width: 172px;
+	height: 172px;
 	display: inline-block;
-	border: 3px black solid;
-}
-/* pre-Angular
-#square0 {
-	border-right: 10px solid white;
-	border-bottom: 10px solid white;
-}
-
-#square1 {
-	border-bottom: 10px solid white;
-}
-
-#square2 {
-	border-left: 10px solid white;
-	border-bottom: 10px solid white;
-}
-
-#square3 {
-	border-right: 10px solid white;
-}
-
-#square4 {
-
-}
-
-#square5 {
-	border-left: 10px solid white;
-}
-
-#square6 {
-	border-top: 10px solid white;
-	border-right: 10px solid white;
-}
-
-#square7 {
-	border-top: 10px solid white;
-}
-
-#square8 {
-	border-top: 10px solid white;
-	border-left: 10px solid white;
-}*/
-
-
-/*.container {
-	height: 1000px;
-	width: 1000px;
-	background-image: url(chalkboard.jpg);
-}
-
-.lines {
+	border: 3px white solid;
+	font-family: 'Walter Turncoat', cursive;
+	font-size: 151px;
+	text-align: center;
 	color: white;
 }
-
-#horline1 {
-	position: relative;
-	top: 166px;
-	height: 22px;
-	width: 500px;
-	background-color: white;
-	z-index: 1;
+.winbox {
+	width: 100%;
+	text-align: center;
+	font-family: 'Walter Turncoat', cursive;
+	color: white;
+	font-size: 60px;
 }
-
-#horline2 {
-	position: relative;
-	top: 332px;
-	height: 22px;
-	width: 500px;
-	background-color: white;
-	z-index: 1;
-}
-
-#verline1 {
-	position: absolute;
-	bottom: -1px;
-	left: 162px;
-	height: 768px;
-	width: 22px;
-	background-color: white;
-	z-index: 1;
-}
-
-#verline2 {
-	position: absolute;
-	bottom: -1px;
-	left: 329px;
-	height: 768px;
-	width: 22px;
-	background-color: white;
-	z-index: 1;
-	float: left;
-}*/
