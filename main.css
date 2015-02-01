@@ -10,8 +10,8 @@ body {
 }
 
 #container {
-	height: 530px;
-	width: 530px;
+	height: 534px;
+	width: 534px;
 	margin-top: 164px;
 	margin: auto;
 }
@@ -27,32 +27,10 @@ body {
 	
 }
 .winbox {
-	/*width: 500px;
 	text-align: center;
 	font-family: 'Walter Turncoat', cursive;
 	color: white;
-	font-size: 60px;
-	height: 500px;
-	border: 23px solid;
-	margin-top: -522px;
-	margin-left: 419px;
-	border-radius: 25px;
-	width: 100%;
-*/	text-align: center;
-	font-family: 'Walter Turncoat', cursive;
-	color: white;
-	font-size: 30px;
+	font-size: 50px;
 	height: 30px;
-	/* border: 10px solid; */
-	/* margin-top: 0; */
-	margin: auto;
-	/* border-radius: 25px; */
+	margin-top: -595px;
 }
-/*
-#quarter{
-	width: 166px;
-	height: 166px;
-	z-index: 0;
-	cursor: pointer;
-
-}*/

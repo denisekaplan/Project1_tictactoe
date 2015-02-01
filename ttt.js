@@ -5,25 +5,25 @@
 	app.controller("gameController", function($scope, $firebase){
 		  
 		  // firebase reference - I need this b/c it makes sense in my heart
-		  // var fireRef = new $window.Firebase("https://denisettt.firebaseio.com/");
+		  // var fireRef = new $window.Firebase("https://denisetictactoe.firebaseio.com/");
 		  
 		  // creates a reference to the board
-		  var boardRef = new Firebase("https://denisettt.firebaseio.com/board");
+		  var boardRef = new Firebase("https://denisetictactoe.firebaseio.com/board");
 		  var boardSync = $firebase(boardRef);
 		  $scope.board = boardSync.$asArray();
 
 		  // firebase turn counter working with the players determines whose turn it is
-		  var countRef = new Firebase("https://denisettt.firebaseio.com/counter");
+		  var countRef = new Firebase("https://denisetictactoe.firebaseio.com/counter");
 		  var countSync = $firebase(countRef);
 	 	  $scope.counter = countSync.$asArray();
 
 		  // firebase players stuff - working with the turn counter determines whose turn it is
-		  var playerRef = new Firebase("https://denisettt.firebaseio.com/players");
+		  var playerRef = new Firebase("https://denisetictactoe.firebaseio.com/players");
 		  var playerSync = $firebase(playerRef);
 		  $scope.players = playerSync.$asArray();
 
 		  // firebase winMessage stuff
-		  var winRef = new Firebase("https://denisettt.firebaseio.com/winMessage");
+		  var winRef = new Firebase("https://denisetictactoe.firebaseio.com/winMessage");
 		  var winSync = $firebase(winRef);
 		  $scope.winMessage = winSync.$asArray();
 
@@ -43,7 +43,7 @@
 				}
 			});
 		 
-		 	// the .length is checking to see if it's created, if it's 0, it hasn't been.
+		 	// the .length is checking to see if a game has started, if it's 0, it hasn't been.
 		    $scope.counter.$loaded(function(){
 				if($scope.counter.length === 0){
 					$scope.counter.$add({turn: 0});
