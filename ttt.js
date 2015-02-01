@@ -1,49 +1,149 @@
+// function(){
+	// this regiaters firebase as a dependecy in the app
+	var app = angular.module('gameApp', ['firebase']);
 
-var app = angular.module('angularInputsApp', []);
+	app.controller("gameController", function($scope, $firebase){
+		  
+		  // firebase reference - I need this b/c it makes sense in my heart
+		  // var fireRef = new $window.Firebase("https://denisettt.firebaseio.com/");
+		  
+		  // creates a reference to the board
+		  var boardRef = new Firebase("https://denisettt.firebaseio.com/board");
+		  var boardSync = $firebase(boardRef);
+		  $scope.board = boardSync.$asArray();
 
-app.controller('angularInputsCtrl', function($scope){
-	// firebase reference
-	var fireRef = new Firebase("https://denisettt.firebaseio.com");
-	// each on of these arrays is a row of the board
-	$scope.board = [["", "", ""], ["", "", ""], ["", "", ""]];
-	
-	$scope.game = {board: [1, 2, 3, 4, 5, 6, 7, 8, 9], p1: "X", p2: "O"};
-	
-	function winConditions(piece){
+		  // firebase turn counter working with the players determines whose turn it is
+		  var countRef = new Firebase("https://denisettt.firebaseio.com/counter");
+		  var countSync = $firebase(countRef);
+	 	  $scope.counter = countSync.$asArray();
 
-        for(var i = 0; i < 3; i++){
-            if($scope.board[i][0] == $scope.board[i][1] && $scope.board[i][0] == $scope.board[i][2] && $scope.board[i][0] != ""){
-                $scope.piece =  piece + " wins!";
-            }
-            else if($scope.board[0][i] == $scope.board[1][i] && $scope.board[0][i] == $scope.board[2][i] && $scope.board[0][i] != ""){
-                $scope.piece =  piece + " wins!";
-            }
-        }
-        if($scope.board[0][0] == $scope.board[1][1] && $scope.board[0][0] == $scope.board[2][2] && $scope.board[0][0] != ""){
-                $scope.piece =  piece + " wins!";
-           
-        }
-    }	
-    $scope.turnNum = 0;
-	$scope.makeMove = function(row,column) {
-		if($scope.board[row][column] == "") {
-		// turn counter
-			var piece = ($scope.turnNum % 2) == 0 ? "X" : "O";
-			$scope.board[row][column] = piece;
-			$scope.turnNum++;
-			winConditions(piece);
-		}
-	};
-});
+		  // firebase players stuff - working with the turn counter determines whose turn it is
+		  var playerRef = new Firebase("https://denisettt.firebaseio.com/players");
+		  var playerSync = $firebase(playerRef);
+		  $scope.players = playerSync.$asArray();
 
+		  // firebase winMessage stuff
+		  var winRef = new Firebase("https://denisettt.firebaseio.com/winMessage");
+		  var winSync = $firebase(winRef);
+		  $scope.winMessage = winSync.$asArray();
 
+		 	// Big ups to Sam for explaining this whole firebase business
+		 	// this makes the board
+		    $scope.board.$loaded(function(){
+				if($scope.board.length === 0){
+					for(var i = 0; i < 9; i++){
+						$scope.board.$add({playerMove: ""});
+					}
+				}
+				else{
+					for(var i = 0; i < 9; i++){
+						$scope.board[i].playerMove = "";
+						$scope.board.$save(i);
+					}
+				}
+			});
+		 
+		 	// the .length is checking to see if it's created, if it's 0, it hasn't been.
+		    $scope.counter.$loaded(function(){
+				if($scope.counter.length === 0){
+					$scope.counter.$add({turn: 0});
+				}
+				// if less than 0, means the game is over and it resets and starts the game over
+				else if($scope.counter[0].turn < 0){
+					$scope.counter[0].turn = 0;
+					$scope.counter.$save(0);
+				}
+				// sets the turn to 0 on page refresh
+				else{
+					$scope.counter[0].turn = 0;
+					$scope.counter.$save(0);
+				}
+			});
+		 
+		    $scope.winMessage.$loaded(function(){
+				if($scope.winMessage.length === 0){
+					$scope.winMessage.$add({message: "Make a move and get this show on the road!"});
+				}
+				else{
+					$scope.winMessage[0].message = "Make a move and get this show on the road!";
+					$scope.winMessage.$save(0);
+				}
+			});
+		 
+			$scope.players.$loaded(function(){
+				if($scope.players.length === 0){
+					$scope.players.$add({playerOne: false, playerTwo: true});
+				}
+				else{
+					$scope.players[0].playerOne = false;
+					$scope.players[0].playerTwo = true;
+					$scope.players.$save(0);
+				}
+			});		 
+		 
+			$scope.makeMove = function(index){
+				if($scope.counter[0].turn === 0){
+					$scope.players[0].playerOne = true;
+					$scope.players[0].playerTwo = false;
+				}
+				if(($scope.board[index].playerMove !== "X") && ($scope.board[index].playerMove !== "O") && ($scope.counter[0].turn >= 0)){
+					if((($scope.counter[0].turn % 2) === 0) && ($scope.players[0].playerOne === true)){
+						var piece = "X";
+						$scope.board[index].playerMove = piece;
+						$scope.board.$save($scope.board[index]);
+						$scope.counter[0].turn++;
+						$scope.counter.$save(0);
+						$scope.winMessage[0].message = "Player Two is up";
+						$scope.winMessage.$save(0);
+					}
 
-
-
-
-
-
-
-
-
-
+					else if((($scope.counter[0].turn % 2) === 1) && ($scope.players[0].playerTwo === true)){
+						var piece = "O";
+						$scope.board[index].playerMove = piece;
+						$scope.board.$save($scope.board[index]);
+						$scope.counter[0].turn++;
+						$scope.counter.$save(0);
+						$scope.winMessage[0].message = "Player One is up";
+						$scope.winMessage.$save(0);
+					}
+					
+					if($scope.counter[0].turn >= 5){
+						winConditions(piece);
+					}
+				}
+			};
+		 
+		 
+			function winConditions(player){
+				if((($scope.board[0].playerMove == $scope.board[1].playerMove) && ($scope.board[0].playerMove == $scope.board[2].playerMove) && ($scope.board[0].playerMove !== "")) ||
+					(($scope.board[3].playerMove == $scope.board[4].playerMove) && ($scope.board[3].playerMove == $scope.board[5].playerMove) && ($scope.board[3].playerMove !== "")) ||
+					(($scope.board[6].playerMove == $scope.board[7].playerMove) && ($scope.board[6].playerMove == $scope.board[8].playerMove) && ($scope.board[6].playerMove !== "")) ||
+					(($scope.board[0].playerMove == $scope.board[3].playerMove) && ($scope.board[0].playerMove == $scope.board[6].playerMove) && ($scope.board[0].playerMove !== "")) ||
+					(($scope.board[1].playerMove == $scope.board[4].playerMove) && ($scope.board[1].playerMove == $scope.board[7].playerMove) && ($scope.board[1].playerMove !== "")) ||
+					(($scope.board[2].playerMove == $scope.board[5].playerMove) && ($scope.board[2].playerMove == $scope.board[8].playerMove) && ($scope.board[2].playerMove !== "")) ||
+					(($scope.board[0].playerMove == $scope.board[4].playerMove) && ($scope.board[0].playerMove == $scope.board[8].playerMove) && ($scope.board[0].playerMove !== "")) ||
+					(($scope.board[2].playerMove == $scope.board[4].playerMove) && ($scope.board[2].playerMove == $scope.board[6].playerMove) && ($scope.board[2].playerMove !== ""))){
+						displayWinner(player);
+				}
+				else if($scope.counter[0].turn == 9){
+					$scope.winMessage[0].message = "What a shock, it's a tie.";
+					$scope.winMessage.$save(0);
+					$scope.counter[0].turn = -2;
+					$scope.counter.$save(0);
+				}
+			}
+		 
+		 
+			function displayWinner(player){
+				if(player == "X"){
+					$scope.winMessage[0].message = "Player One Wins";
+				}
+				else if(player == "O"){
+					$scope.winMessage[0].message = "Player Two Wins";
+				}
+				$scope.winMessage.$save(0);
+				$scope.counter[0].turn = -2;
+				$scope.counter.$save(0);
+			}
+	});
+// })();

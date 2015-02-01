@@ -1,14 +1,13 @@
-html {
+body {
 	background-image: url(chalkboard.jpg);
+	font-family: 'Walter Turncoat', cursive;
+	color: white;
 }
-/*
-#quarter{
-	width: 166px;
-	height: 166px;
-	z-index: 0;
-	cursor: pointer;
 
-}*/
+#heading {
+	font-size: 85px;
+	text-align: center;
+}
 
 #container {
 	height: 530px;
@@ -18,19 +17,42 @@ html {
 }
 
 .square  {
-	width: 172px;
+	width: 170px;
 	height: 172px;
 	display: inline-block;
 	border: 3px white solid;
 	font-family: 'Walter Turncoat', cursive;
 	font-size: 151px;
 	text-align: center;
-	color: white;
+	
 }
 .winbox {
-	width: 100%;
+	/*width: 500px;
 	text-align: center;
 	font-family: 'Walter Turncoat', cursive;
 	color: white;
 	font-size: 60px;
+	height: 500px;
+	border: 23px solid;
+	margin-top: -522px;
+	margin-left: 419px;
+	border-radius: 25px;
+	width: 100%;
+*/	text-align: center;
+	font-family: 'Walter Turncoat', cursive;
+	color: white;
+	font-size: 30px;
+	height: 30px;
+	/* border: 10px solid; */
+	/* margin-top: 0; */
+	margin: auto;
+	/* border-radius: 25px; */
 }
+/*
+#quarter{
+	width: 166px;
+	height: 166px;
+	z-index: 0;
+	cursor: pointer;
+
+}*/
