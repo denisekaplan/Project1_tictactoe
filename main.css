@@ -24,6 +24,8 @@ body {
 	font-family: 'Walter Turncoat', cursive;
 	font-size: 151px;
 	text-align: center;
+	/*this fixes the moving box problem - thanks, Lauren!*/
+	vertical-align: middle;
 	
 }
 .winbox {

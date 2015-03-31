@@ -43,7 +43,7 @@
 				}
 			});
 		 
-		 	// the .length is checking to see if a game has started, if it's 0, it hasn't been.
+		 	// .length checking to see if a game has started, if it's 0, it hasn't been.
 		    $scope.counter.$loaded(function(){
 				if($scope.counter.length === 0){
 					$scope.counter.$add({turn: 0});
@@ -59,7 +59,7 @@
 					$scope.counter.$save(0);
 				}
 			});
-		 
+		 	// Sam help not entirely sure - this was part of the stuff I had to rebuild at the last minute
 		    $scope.winMessage.$loaded(function(){
 				if($scope.winMessage.length === 0){
 					$scope.winMessage.$add({message: "Make a move and get this show on the road!"});
@@ -69,7 +69,7 @@
 					$scope.winMessage.$save(0);
 				}
 			});
-		 
+		 	// Sam help not entirely sure - this was part of the stuff I had to rebuild at the last minute
 			$scope.players.$loaded(function(){
 				if($scope.players.length === 0){
 					$scope.players.$add({playerOne: false, playerTwo: true});
@@ -80,7 +80,7 @@
 					$scope.players.$save(0);
 				}
 			});		 
-		 
+		 	
 			$scope.makeMove = function(index){
 				if($scope.counter[0].turn === 0){
 					$scope.players[0].playerOne = true;
@@ -113,7 +113,7 @@
 				}
 			};
 		 
-		 
+		 	// win conditions - if these combinations of are occupied by a player, a winner is declared
 			function winConditions(player){
 				if((($scope.board[0].playerMove == $scope.board[1].playerMove) && ($scope.board[0].playerMove == $scope.board[2].playerMove) && ($scope.board[0].playerMove !== "")) ||
 					(($scope.board[3].playerMove == $scope.board[4].playerMove) && ($scope.board[3].playerMove == $scope.board[5].playerMove) && ($scope.board[3].playerMove !== "")) ||
@@ -125,6 +125,7 @@
 					(($scope.board[2].playerMove == $scope.board[4].playerMove) && ($scope.board[2].playerMove == $scope.board[6].playerMove) && ($scope.board[2].playerMove !== ""))){
 						displayWinner(player);
 				}
+				// tie logic
 				else if($scope.counter[0].turn == 9){
 					$scope.winMessage[0].message = "What a shock, it's a tie.";
 					$scope.winMessage.$save(0);
